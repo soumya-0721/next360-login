@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f2f5;
+  color: #1f2937;
+}
+
+/* Toast animations */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.toast-enter { animation: slideIn 0.3s ease-out; }
+.toast-exit { animation: fadeOut 0.3s ease-in; }
+
+/* Selfie modal */
+.selfie-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.selfie-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Image modal */
+.img-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.img-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Confetti animation for birthdays */
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.6); }
+}
+
+.birthday-today { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1a1; }
