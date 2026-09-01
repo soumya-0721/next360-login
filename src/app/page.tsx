@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { User } from 'lucide-react';
 import { hashPassword } from '@/lib/utils';
 import { createClient } from '@/lib/supabase/client';
 import { DEFAULT_USERS } from '@/lib/default-users';
@@ -67,7 +68,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[#2b7a3e] flex items-center justify-center p-4 sm:p-6">
       {/* Main Card */}
       <div className={`w-full max-w-[900px] bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-        <div className="flex flex-col lg:flex-row min-h-[520px]">
+        <div className="flex flex-col lg:flex-row min-h-[300px]">
 
           {/* Left Panel - Branded */}
           <div className="lg:w-[42%] relative bg-gradient-to-br from-[#2b7a3e] via-[#237034] to-[#1a5c28] overflow-hidden">
@@ -112,7 +113,7 @@ export default function LoginPage() {
           </div>
 
           {/* Right Panel - Form */}
-          <div className="lg:w-[58%] flex items-center justify-center p-8 lg:p-10 bg-white">
+          <div className="lg:w-[58%] flex items-center justify-center p-6 lg:p-7 bg-white">
             <div className="w-full max-w-[380px]">
               {/* Header */}
               <div className="mb-8">
@@ -212,17 +213,17 @@ export default function LoginPage() {
               </div>
 
               {/* Quick Login */}
-              <div className="space-y-2.5">
+              <div className="grid grid-cols-2 gap-2.5">
                 {quickLoginUsers.map((u) => (
                   <button
                     key={u.email}
                     onClick={() => handleQuickLogin(u.email, u.password)}
-                    className="w-full flex items-center gap-3 px-4 py-2.5 bg-white border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50/30 transition-all text-left group"
+                    className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50/30 transition-all text-left group min-w-0"
                   >
-                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold text-xs group-hover:bg-green-200 transition-colors flex-shrink-0">
-                      {u.name.charAt(0)}
+                    <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center text-green-700 group-hover:bg-green-200 transition-colors flex-shrink-0">
+                      <User className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-green-700 transition-colors">{u.name}</span>
+                    <span className="text-xs font-medium text-gray-700 group-hover:text-green-700 transition-colors truncate">{u.name}</span>
                   </button>
                 ))}
               </div>
